@@ -1,17 +1,36 @@
 // import 'package:flutter/material.dart';
 
 void main() {
+  sets();
+}
+
+// === 2.sets ===
+void sets() {
+  // 1.init
+  var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+  var names = <String>{};
+  // Set<String> halogens = {}; // dThis works, too.
+  // var halogens = {} // Creates a map, not a set.
+  print('1.$halogens'); 
+  
+  // 2.constant set
+  final constantSet = const {
+    'fluorine',
+    'chlorine',
+    'bromine',
+  };
+  constantSet.add('helium');
 
 }
 
-// ===== 一.集合 ======
+// === 1.colleciton ===
 void colleciton() {
   // 1.collection
   var list = [1, 3, 4];
   list[0] = 5;
   print('1.$list[0]');
 
-  // 2.const with collection
+  // 2.const collection
   var constantList = const[1, 2, 3];
   // constantList[1] = 5; Error:Cannot modify an unmodifiable list
   print('2.constantList = $constantList');
