@@ -6,21 +6,34 @@ void main() {
 
 // === 2.sets ===
 void sets() {
+  // set：无序且唯一值的集合，和 iOS 中的 set 差不多
+
   // 1.init
-  var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+  var halogens = {'fluorine', 'chlorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
   var names = <String>{};
   // Set<String> halogens = {}; // dThis works, too.
+
+  // {} defaults to the Map type.
   // var halogens = {} // Creates a map, not a set.
-  print('1.$halogens'); 
+
+  // 只会打印 1 个 chlorine
+  print('1.$halogens');  //  1.{fluorine, chlorine, bromine, iodine, astatine}
   
-  // 2.constant set
+  // 2. add & addAll
+  var elements = <String>{};
+  elements.add('fluorine');
+  elements.addAll(halogens);
+  print("2.$elements");
+  print("2.length = ${elements.length}");
+
+  // 3.constant set
   final constantSet = const {
     'fluorine',
     'chlorine',
     'bromine',
   };
-  constantSet.add('helium');
-
+  // constantSet.add('helium'); 
+  print("3.$constantSet");
 }
 
 // === 1.colleciton ===
