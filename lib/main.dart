@@ -28,7 +28,7 @@ void main() {
   这些最底层的 widget 通常为 RenderObject, 它会计算并描述 widget 的几何形状。
  */
 
-// === 一.基础 Widget ===
+// ===== 一.基础 Widget =====
 
 /*
 1.Text: 该 widget 可以创建一个带格式的文本
@@ -56,6 +56,10 @@ BoxDecoration，如 background、一个边框、或者一个阴影。 Container 
 边距（margins）、填充（padding）和应用于其大小的约束（containers）。另外，
  Container 可以使用矩阵再三维空间中对其进行变换。
  */
+
+void aboutContainer() {
+
+}
 
 class MyAppBar extends StatelessWidget {
   MyAppBar({this.title});
@@ -114,3 +118,15 @@ class Myscaffold extends StatelessWidget {
     );
   }
 }
+
+
+// ===== 二.Material 组件 =====
+
+/*
+Flutter 提供了许多 widgets，可以帮助您构建遵循 Material Design 的应用程序。
+Magterial 应用程序以 MaterialApp widget 开始，改 widget 在应用程序的根部
+创建了一些有用的 widget，其中包括一个 Navigator。
+
+Navigator 管理由字符串标识的 Widget 栈(即页面路由栈)。Navigator 可以让您的
+应用程序在页面之间平滑的过渡。
+ */
