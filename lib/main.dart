@@ -1,8 +1,11 @@
 // import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
+
 // import 'flutter/0.simpleDemo.dart';
+
 // import 'flutter/1.Widget框架总览.dart';
+import 'flutter/1.Widget组件/1.Scaffold.dart';
 
 void main() {
   /*
@@ -11,8 +14,10 @@ void main() {
    */
   runApp(
       // 为了继承主题数据
-      MaterialApp(title: 'base widget', home: Myscaffold(),);
+      // MaterialApp(title: 'base widget', home: Myscaffold(),);
       // MaterialApp(title: 'app title', home: TutorialHome()));
+      ScaffoldApp()
+  );
 }
 
 /*
@@ -30,19 +35,16 @@ void main() {
 /*
 1.Text: 该 widget 可以创建一个带格式的文本
  */
-void aboutText() {}
 
 /*
 2.Row、Column: 这些具有弹性空间的布局类 Widget 可让您在水平（Row）和垂直（Column）
 方向上创建灵活的布局。
  */
-void aboutRowColumn() {}
 
 /* 
 3.Stack: 取代线性布局，Stack 允许子 widget 堆叠，你可以使用 Positioned 来定位
 他们相对于 Stack 的上下左右四条边的位置。
  */
-void aboutStack() {}
 
 /*
 4.Container: Container 可让您创建矩形视觉元素。Container 可以装饰为一个 
@@ -51,7 +53,6 @@ BoxDecoration，如 background、一个边框、或者一个阴影。 Container 
  Container 可以使用矩阵再三维空间中对其进行变换。
  */
 
-void aboutContainer() {}
 
 class MyAppBar extends StatelessWidget {
   MyAppBar({this.title});
@@ -115,16 +116,22 @@ class Myscaffold extends StatelessWidget {
 
 /*
 Flutter 提供了许多 widgets，可以帮助您构建遵循 Material Design 的应用程序。
-Magterial 应用程序以 MaterialApp widget 开始，改 widget 在应用程序的根部
+Magterial 应用程序以 MaterialApp widget 开始，该 widget 在应用程序的根部
 创建了一些有用的 widget，其中包括一个 Navigator。
 
 Navigator 管理由字符串标识的 Widget 栈(即页面路由栈)。Navigator 可以让您的
 应用程序在页面之间平滑的过渡。
+
+Material：译为小部件
+Material Design: 译为小部件设计
+
+Widgets 总览 - Material 组件: https://flutterchina.club/widgets/material/
  */
 
 class TutorialHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Scaffold 是一个通用的小部件视觉之家
     return Scaffold(
       appBar: AppBar(
         leading:  IconButton(
@@ -152,3 +159,6 @@ class TutorialHome extends StatelessWidget {
     );
   }
 }
+
+// ===== 3.处理手势 =====
+
