@@ -8,14 +8,11 @@ void main() {
   /*
   1.runApp 函数接受给定的 Widget 并使其成为 widget 树的根。
   2.框架强制根 widget 覆盖整个屏幕。
-   */ 
+   */
   runApp(
-    // 为了继承主题数据
-    MaterialApp(
-      title: 'app title',
-      home: Myscaffold()
-    )
-  );
+      // 为了继承主题数据
+      MaterialApp(title: 'base widget', home: Myscaffold(),);
+      // MaterialApp(title: 'app title', home: TutorialHome()));
 }
 
 /*
@@ -33,22 +30,19 @@ void main() {
 /*
 1.Text: 该 widget 可以创建一个带格式的文本
  */
-void aboutText() {
-}
+void aboutText() {}
 
 /*
 2.Row、Column: 这些具有弹性空间的布局类 Widget 可让您在水平（Row）和垂直（Column）
 方向上创建灵活的布局。
  */
-void aboutRowColumn() {
-}
+void aboutRowColumn() {}
 
 /* 
 3.Stack: 取代线性布局，Stack 允许子 widget 堆叠，你可以使用 Positioned 来定位
 他们相对于 Stack 的上下左右四条边的位置。
  */
-void aboutStack() {
-}
+void aboutStack() {}
 
 /*
 4.Container: Container 可让您创建矩形视觉元素。Container 可以装饰为一个 
@@ -57,9 +51,7 @@ BoxDecoration，如 background、一个边框、或者一个阴影。 Container 
  Container 可以使用矩阵再三维空间中对其进行变换。
  */
 
-void aboutContainer() {
-
-}
+void aboutContainer() {}
 
 class MyAppBar extends StatelessWidget {
   MyAppBar({this.title});
@@ -71,11 +63,11 @@ class MyAppBar extends StatelessWidget {
     return Container(
       height: 56.0,
       padding: EdgeInsets.symmetric(horizontal: 5.0),
-      decoration: BoxDecoration(color:  Colors.blue[500]),
-      child:  Row(
+      decoration: BoxDecoration(color: Colors.blue[500]),
+      child: Row(
         children: <Widget>[
           IconButton(
-            icon:  Icon(Icons.menu),
+            icon: Icon(Icons.menu),
             tooltip: 'Navigation menu',
             onPressed: null, // null 会禁用 button
           ),
@@ -119,7 +111,6 @@ class Myscaffold extends StatelessWidget {
   }
 }
 
-
 // ===== 二.Material 组件 =====
 
 /*
@@ -130,3 +121,34 @@ Magterial 应用程序以 MaterialApp widget 开始，改 widget 在应用程序
 Navigator 管理由字符串标识的 Widget 栈(即页面路由栈)。Navigator 可以让您的
 应用程序在页面之间平滑的过渡。
  */
+
+class TutorialHome extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading:  IconButton(
+          icon:  Icon(Icons.menu),
+          tooltip: 'Navigation menu',
+          onPressed: null,
+        ),
+        title: Text('Example title'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            tooltip: 'Search',
+            onPressed: null,
+          )
+        ],
+      ),
+      body: Center(
+        child: Text('Hellow, world!'),
+      ),
+      floatingActionButton:  FloatingActionButton(
+        tooltip: 'Add',
+        child: Icon(Icons.add),
+        onPressed: null,
+      ),
+    );
+  }
+}
