@@ -1,10 +1,6 @@
-// import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-
-
-import 'package:myflutter/flutter/1.Widget组件/1.widget概述.dart';
-// import 'flutter/0.simpleDemo.dart';
-// import 'flutter/1.Widget框架总览.dart';
+import 'package:myflutter/flutter/Widgets/1Layout.dart';
+import 'package:myflutter/flutter/record/1simpleDemo.dart';
 
 void main() {
   /*
@@ -13,7 +9,51 @@ void main() {
    */
   runApp(
       // 为了继承主题数据
-      MaterialApp(title: 'Layout', home: LayoutWidgetsList(),)
-  );
+      MaterialApp(
+    title: 'Layout',
+    // home: LayoutWidgetsList(),
+    home: MenuList(),
+  ));
 }
 
+class MenuList extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => MenuListState();
+}
+
+class MenuListState extends State<MenuList> {
+  List<String> menuList = ['Simple Demo', 'Layout'];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Menu List'),
+      ),
+      body: ListView.builder(
+        itemCount: menuList.length,
+        itemBuilder: ((context, i) {
+          return _buildCell(context, i);
+        }),
+      ),
+    );
+  }
+
+  Widget _buildCell(BuildContext context, int i) {
+    String title = menuList[i];
+    return ListTile(
+      title: Text('${i + 1}.${menuList[i]}'),
+      onTap: (() {
+        if (title == 'Simple Demo') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return RandomWords();
+          }));
+        } else if (title == 'Layout') {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return LayoutWidgetsList();
+          }));
+        }
+      }),
+    );
+  }
+}
