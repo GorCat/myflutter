@@ -13,7 +13,7 @@ class LayoutWidgetsListState extends State<LayoutWidgetsList> {
         title: Text('Layout Widget'),
       ),
       body: ListView.builder(
-        itemCount: 2,
+        itemCount: 3,
         itemBuilder: ((context, i) {
           return _bullCell(i);
         }),
@@ -27,6 +27,8 @@ class LayoutWidgetsListState extends State<LayoutWidgetsList> {
         return _aboutAlign();
       case 1:
         return _aboutAspectRatio();
+        case 2:
+        return _aboutBaseline();
       default:
         return null;
     }
@@ -139,5 +141,18 @@ class LayoutWidgetsListState extends State<LayoutWidgetsList> {
       'aspectRatio: 5/1 \n受到类似 Expend 父级\n强制扩展而未生效',
       'align + aspectRatio: 5/1 \n通过增加一层 Align \n隔离父级的影响'
     ], '2.AspectRatio 横纵比');
+  }
+
+  // 3.
+  Widget _aboutBaseline() {
+    return formate([
+      Baseline(
+        baseline: 0,
+        baselineType: TextBaseline.alphabetic,
+        child: _flutterLogo(),
+      ),
+    ], [
+      '1, ideographic'
+    ], '3.Baseline 基线1');
   }
 }
