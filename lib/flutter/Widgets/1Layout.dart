@@ -13,7 +13,7 @@ class LayoutWidgetsListState extends State<LayoutWidgetsList> {
         title: Text('Layout Widget'),
       ),
       body: ListView.builder(
-        itemCount: 1,
+        itemCount: 2,
         itemBuilder: ((context, i) {
           return _bullCell(i);
         }),
@@ -25,6 +25,8 @@ class LayoutWidgetsListState extends State<LayoutWidgetsList> {
     switch (i) {
       case 0:
         return _aboutAlign();
+      case 1:
+        return _aboutAspectRatio();
       default:
         return null;
     }
@@ -66,9 +68,9 @@ class LayoutWidgetsListState extends State<LayoutWidgetsList> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              '$title',
-              style: TextStyle(color: Colors.blue, fontSize: 20),
-            ),
+                '$title',
+                style: TextStyle(color: Colors.blue, fontSize: 20),
+              ),
             Container(
               padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
               child: Row(
@@ -85,21 +87,32 @@ class LayoutWidgetsListState extends State<LayoutWidgetsList> {
       ),
     );
   }
+
+  Widget _flutterLogo() {
+    return FlutterLogo(
+      size: 60,
+    );
+  }
+
+  Widget _greenSquare() {
+    return Container(
+      width: 60,
+      height: 60,
+      color: Colors.green,
+    );
+  }
+
   // 一.单控件布局
 
   // 1.Align
   Widget _aboutAlign() {
     return formate([
       Align(
-        child: FlutterLogo(
-          size: 60,
-        ),
+        child: _flutterLogo(),
         alignment: Alignment.topRight, // 放置在右上角
       ),
       Align(
-        child: FlutterLogo(
-          size: 60,
-        ),
+        child: _flutterLogo(),
         alignment: Alignment(-1, -1), // 放置在左上角
       ),
     ], [
@@ -108,5 +121,23 @@ class LayoutWidgetsListState extends State<LayoutWidgetsList> {
     ], '1.Align 对齐');
   }
 
-  // 2.
+  // 2.横纵比
+  Widget _aboutAspectRatio() {
+    return formate([
+      AspectRatio(
+        aspectRatio: 5 / 1, // 长 / 宽
+        child: _greenSquare(),
+      ),
+      Align(
+        alignment: Alignment.bottomCenter,
+        child: AspectRatio(
+          aspectRatio: 5 / 1, // 长 / 宽
+          child: _greenSquare(),
+        ),
+      )
+    ], [
+      'aspectRatio: 5/1 \n受到类似 Expend 父级\n强制扩展而未生效',
+      'align + aspectRatio: 5/1 \n通过增加一层 Align \n隔离父级的影响'
+    ], '2.AspectRatio 横纵比');
+  }
 }
