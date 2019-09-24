@@ -1,59 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:myflutter/flutter/Widgets/1Layout.dart';
-import 'package:myflutter/flutter/record/1simpleDemo.dart';
 
 void main() {
-  /*
-  1.runApp 函数接受给定的 Widget 并使其成为 widget 树的根。
-  2.框架强制根 widget 覆盖整个屏幕。
-   */
-  runApp(
-      // 为了继承主题数据
-      MaterialApp(
-    title: 'Layout',
-    // home: LayoutWidgetsList(),
-    home: MenuList(),
-  ));
+  // /*
+  // 1.runApp 函数接受给定的 Widget 并使其成为 widget 树的根。
+  // 2.框架强制根 widget 覆盖整个屏幕。
+  //  */
+  // runApp(
+  //   // 为了继承主题数据
+  //   MaterialApp(
+  //     title: 'Layout',
+  //     home: LayoutWidgetsList(),
+  //   ),
+  // );
+  print(greetBob(Person('Lucy')) + greetBob(Impostor()));
 }
 
-class MenuList extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => MenuListState();
+String greetBob(Person person) => person.greet('Bob');
+class Person {
+  final name;
+
+  Person(this.name);
+
+  String greet(String who) => 'Hello, $who, I am $name';
 }
 
-class MenuListState extends State<MenuList> {
-  List<String> menuList = ['Simple Demo', 'Layout'];
+class Impostor implements Person {
+  @override
+  get name => '???';
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Menu List'),
-      ),
-      body: ListView.builder(
-        itemCount: menuList.length,
-        itemBuilder: ((context, i) {
-          return _buildCell(context, i);
-        }),
-      ),
-    );
-  }
-
-  Widget _buildCell(BuildContext context, int i) {
-    String title = menuList[i];
-    return ListTile(
-      title: Text('${i + 1}.${menuList[i]}'),
-      onTap: (() {
-        if (title == 'Simple Demo') {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return RandomWords();
-          }));
-        } else if (title == 'Layout') {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-            return LayoutWidgetsList();
-          }));
-        }
-      }),
-    );
-  }
+  String greet(String who) => 'Hi, $who, do you know who I am?';
 }
